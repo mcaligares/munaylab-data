@@ -48,13 +48,14 @@ interface DataSample {
         fechaDeConstitucion: new Date() -1
     ]
 
-    static final CADENA_DE_20_CARACTERES = '12345678901234567890'
-    static final CADENA_DE_100_CARACTERES = (1..100).join().toString()
-    static final CADENA_DE_200_CARACTERES = (1..200).join().toString()
-    static final CADENA_DE_300_CARACTERES = (1..300).join().toString()
-    static final CADENA_DE_500_CARACTERES = (1..500).join().toString()
-    static final CADENA_DE_1000_CARACTERES = (1..1000).join().toString()
-    static final CADENA_DE_5000_CARACTERES = (1..5000).join().toString()
+    static final CADENA_DE_10_CARACTERES = '1234567890'
+    static final CADENA_DE_20_CARACTERES = (1..2).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_100_CARACTERES = (1..10).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_200_CARACTERES = (1..20).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_300_CARACTERES = (1..30).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_500_CARACTERES = (1..50).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_1000_CARACTERES = (1..100).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_5000_CARACTERES = (1..500).collect{CADENA_DE_10_CARACTERES}.join()
 
     static final AUTORES_VALIDOS = ['abc', 'mcaligares', CADENA_DE_20_CARACTERES]
     static final AUTORES_INVALIDOS = [null, '', ' ', '  ', CADENA_DE_20_CARACTERES + '1']
@@ -85,4 +86,20 @@ interface DataSample {
 
     static final RESUMENES_DE_ORGANIZACION_VALIDOS = ['Lorem ipsum dolor sit amet']
     static final RESUMENES_DE_ORGANIZACION_INVALIDOS = [null, '', '123456789', CADENA_DE_300_CARACTERES + '1']
+
+    static final PLANIFICACION_VALIDA = [
+        nombre: 'planificacion',
+        descripcion: 'descripcion de planing',
+        contenido: 'contenido de la planing',
+        fechaDeInicio: new Date() +10,
+        fechaDeFin: new Date() +50,
+        publicado: true
+    ]
+
+    static final NOMBRES_DE_PLANIFICACION_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_500_CARACTERES)]
+    static final NOMBRES_DE_PLANIFICACION_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_500_CARACTERES +'1']
+    static final DESCRIPCION_DE_PLANIFICACION_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_1000_CARACTERES)]
+    static final DESCRIPCION_DE_PLANIFICACION_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_1000_CARACTERES +'1']
+    static final CONTENIDO_DE_PLANIFICACION_VALIDOS = [CADENA_DE_10_CARACTERES, 'Lorem ipsum dolor sit amet', (CADENA_DE_5000_CARACTERES)]
+    static final CONTENIDO_DE_PLANIFICACION_INVALIDOS = [null, '', ' ', CADENA_DE_10_CARACTERES -'1', CADENA_DE_5000_CARACTERES +'1']
 }
