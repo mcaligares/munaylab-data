@@ -81,3 +81,8 @@ test {
         }
     }
 }
+
+task tdd {
+  inputs.files 'src/test'
+  dependsOn test
+}
