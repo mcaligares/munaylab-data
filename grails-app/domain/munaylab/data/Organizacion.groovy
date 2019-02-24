@@ -13,18 +13,9 @@ class Organizacion {
     String resumen
     Direccion direccion
     Date fechaDeConstitucion
-    Articulo mision
-    Articulo vision
-    Articulo valores
 
     Date dateCreated
     Date lastUpdated
-
-    static hasOne = [
-        mision: Articulo,
-        vision: Articulo,
-        valores: Articulo
-    ]
 
     static hasMany = [
         editores: Usuario,
@@ -38,8 +29,5 @@ class Organizacion {
         resumen nullable: false, blank: false, size: 10..300
         direccion nullable: false
         fechaDeConstitucion nullable: false, max: new Date() +1
-        mision nullable: true
-        vision nullable: true
-        valores nullable: true
     }
 }

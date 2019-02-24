@@ -87,8 +87,8 @@ interface DataSample {
     static final RESUMENES_DE_ORGANIZACION_VALIDOS = ['Lorem ipsum dolor sit amet']
     static final RESUMENES_DE_ORGANIZACION_INVALIDOS = [null, '', '123456789', CADENA_DE_300_CARACTERES + '1']
 
-    static final PLANIFICACION_VALIDA = [
-        nombre: 'planificacion',
+    static final PROGRAMA_VALIDO = [
+        nombre: 'PROGRAMA',
         descripcion: 'descripcion de planing',
         contenido: 'contenido de la planing',
         fechaDeInicio: new Date() +10,
@@ -96,10 +96,10 @@ interface DataSample {
         publicado: true
     ]
 
-    static final NOMBRES_DE_PLANIFICACION_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_500_CARACTERES)]
-    static final NOMBRES_DE_PLANIFICACION_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_500_CARACTERES +'1']
-    static final DESCRIPCION_DE_PLANIFICACION_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_1000_CARACTERES)]
-    static final DESCRIPCION_DE_PLANIFICACION_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_1000_CARACTERES +'1']
-    static final CONTENIDO_DE_PLANIFICACION_VALIDOS = [CADENA_DE_10_CARACTERES, 'Lorem ipsum dolor sit amet', (CADENA_DE_5000_CARACTERES)]
-    static final CONTENIDO_DE_PLANIFICACION_INVALIDOS = [null, '', ' ', CADENA_DE_10_CARACTERES -'1', CADENA_DE_5000_CARACTERES +'1']
+    static final NOMBRES_DE_PROGRAMA_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_500_CARACTERES)]
+    static final NOMBRES_DE_PROGRAMA_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_500_CARACTERES +'1']
+    static final DESCRIPCION_DE_PROGRAMA_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_1000_CARACTERES)]
+    static final DESCRIPCION_DE_PROGRAMA_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_1000_CARACTERES +'1']
+    static final CONTENIDO_DE_PROGRAMA_VALIDOS = [CADENA_DE_10_CARACTERES, 'Lorem ipsum dolor sit amet', (CADENA_DE_5000_CARACTERES)]
+    static final CONTENIDO_DE_PROGRAMA_INVALIDOS = [null, '', ' ', CADENA_DE_10_CARACTERES -'1', CADENA_DE_5000_CARACTERES +'1']
 }

@@ -7,6 +7,7 @@ import munaylab.data.Disponibilidad
 import munaylab.data.Privacidad
 import munaylab.data.Organizacion
 import munaylab.data.Planificacion
+import munaylab.data.Programa
 import munaylab.data.Usuario
 import munaylab.data.Voluntario
 import spock.lang.Specification
@@ -96,13 +97,17 @@ class SpecificationTestBuilder extends Specification implements DataSample {
     }
 
     protected Planificacion getPlanificacionValida() {
-        return new Planificacion(PLANIFICACION_VALIDA + [organizacion: organizacionValida])
+        return new Planificacion([organizacion: organizacionValida])
     }
 
-    protected Planificacion nuevaPlanificacionCon(String campo, def valor) {
-        Planificacion planing = planificacionValida
-        planing[campo] = valor
-        return planing
+    protected Programa getProgramaValido() {
+        return new Programa(PROGRAMA_VALIDO + [planificacion: planificacionValida])
+    }
+
+    protected Programa nuevoProgramaCon(String campo, def valor) {
+        Programa programa = programaValido
+        programa[campo] = valor
+        return programa
     }
 
 }
