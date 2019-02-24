@@ -2,7 +2,10 @@ package munaylab.data
 
 import groovy.transform.ToString
 
-@ToString(includeNames=true, includeFields=true, excludes='editores,administradores,voluntarios')
+@ToString(
+    includeNames=true, 
+    includeFields=true, 
+    excludes='editores,administradores,voluntarios')
 class Organizacion {
 
     String nombre

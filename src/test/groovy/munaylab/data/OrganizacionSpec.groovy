@@ -76,7 +76,7 @@ class OrganizacionSpec extends SpecificationTestBuilder implements DomainUnitTes
         org.valores = nuevoArticulo('valores')
         org.save(flush: true, failOnError: true)
         and:
-        // Guardamos los articulos mision y vision de forma separada
+        // TODO Guardamos los articulos mision y vision de forma separada
         org.vision = nuevoArticulo('vision')
         org.save(flush: true, failOnError: true)
         then:
