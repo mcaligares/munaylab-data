@@ -3,8 +3,8 @@ package munaylab.data
 import groovy.transform.ToString
 
 @ToString(
-    includeNames=true, 
-    includeFields=true, 
+    includeNames=true,
+    includeFields=true,
     excludes='editores,administradores,voluntarios')
 class Organizacion {
 
@@ -13,9 +13,12 @@ class Organizacion {
     String resumen
     Direccion direccion
     Date fechaDeConstitucion
+    Planificacion planificacion
 
     Date dateCreated
     Date lastUpdated
+
+    static hasOne = [planificacion: Planificacion]
 
     static hasMany = [
         editores: Usuario,
@@ -29,5 +32,6 @@ class Organizacion {
         resumen nullable: false, blank: false, size: 10..300
         direccion nullable: false
         fechaDeConstitucion nullable: false, max: new Date() +1
+        planificacion nullable: false
     }
 }

@@ -1,13 +1,16 @@
 package munaylab
 
+import munaylab.data.Actividad
 import munaylab.data.Articulo
 import munaylab.data.Contrato
 import munaylab.data.Direccion
 import munaylab.data.Disponibilidad
 import munaylab.data.Privacidad
 import munaylab.data.Organizacion
+import munaylab.data.Plan
 import munaylab.data.Planificacion
 import munaylab.data.Programa
+import munaylab.data.Proyecto
 import munaylab.data.Usuario
 import munaylab.data.Voluntario
 import spock.lang.Specification
@@ -83,6 +86,7 @@ class SpecificationTestBuilder extends Specification implements DataSample {
     protected Organizacion getOrganizacionValida() {
         Organizacion org = new Organizacion(ORGANIZACION_VALIDA)
         org.direccion = direccionValida
+        org.planificacion = new Planificacion()
         return org
     }
 
@@ -100,14 +104,54 @@ class SpecificationTestBuilder extends Specification implements DataSample {
         return new Planificacion([organizacion: organizacionValida])
     }
 
+    protected Plan getPlanValido() {
+        return new Plan(PLAN_VALIDO + [planificacion: planificacionValida])
+    }
+
+    protected Plan nuevoPlanCon(String campo, def valor) {
+        Plan plan = planValido
+        plan[campo] = valor
+        return plan
+    }
+
     protected Programa getProgramaValido() {
-        return new Programa(PROGRAMA_VALIDO + [planificacion: planificacionValida])
+        return new Programa(PLAN_VALIDO + [planificacion: planificacionValida])
     }
 
-    protected Programa nuevoProgramaCon(String campo, def valor) {
-        Programa programa = programaValido
-        programa[campo] = valor
-        return programa
+    protected Proyecto getProyectoValido() {
+        return new Proyecto(PLAN_VALIDO + [programa: programaValido, planificacion: planificacionValida])
     }
 
+    protected Actividad getActividadValida() {
+        return new Actividad(PLAN_VALIDO + [proyecto: proyectoValido, planificacion: planificacionValida])
+    }
+
+    protected void comprobarLaPlanificacionDeUnaOrganizacion(Organizacion org) {
+        assert Organizacion.count() == 1
+        assert Planificacion.count() == 1
+        assert org.planificacion != null
+        def id = org.planificacion.id
+        assert org.planificacion == Planificacion.get(id)
+    }
+
+    protected void comprobarLosProgramasDeUnaOrganizacion(Organizacion org) {
+        comprobarLaPlanificacionDeUnaOrganizacion(org)
+        assert Programa.count() == 1
+        def id = org.planificacion.programas.first().id
+        assert org.planificacion.programas.first() == Programa.get(id)
+    }
+
+    protected void comprobarLosProyectosDeUnaOrganizacion(Organizacion org) {
+        comprobarLosProgramasDeUnaOrganizacion(org)
+        assert Proyecto.count() == 1
+        def id = org.planificacion.programas.first().proyectos.first().id
+        assert org.planificacion.programas.first().proyectos.first() == Proyecto.get(id)
+    }
+
+    protected void comprobarLasActividadesDeUnaOrganizacion(Organizacion org) {
+        comprobarLosProyectosDeUnaOrganizacion(org)
+        assert Actividad.count() == 1
+        assert org.planificacion.programas.first().proyectos.first().actividades.first()
+        // TODO comparar actividad del obj con la de base de datos
+    }
 }
