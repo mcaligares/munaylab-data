@@ -64,20 +64,27 @@ grailsPublish {
 
 test {
     testLogging.exceptionFormat = 'full'
-    // testLogging.showStandardStreams = true
-    beforeTest { descriptor ->
-        String fullClassName = descriptor.className
-        String className = fullClassName.substring(fullClassName.indexOf('munaylab.') + 9)
-        print "> [${className.replace('Spec', '')}] - ${descriptor.name}"
-    }
-    afterTest { descriptor, result ->
-        String RED = '\u001B[31m'
-        String RESET = '\u001B[0m'
-        String GREEN = '\u001B[32m'
-        if (result.resultType == TestResult.ResultType.SUCCESS) {
-            println "$GREEN \u2714 $RESET"
-        } else {
-            println "$RED \u2716 $RESET"
+    testLogging.showStandardStreams = true
+    if (project.hasProperty("log")) {
+        beforeTest { descriptor ->
+            String fullClassName = descriptor.className
+            String className = fullClassName.substring(fullClassName.indexOf('munaylab.') + 9)
+            print "> [${className.replace('Spec', '')}] - ${descriptor.name}"
+        }
+        afterTest { descriptor, result ->
+            String RED = '\u001B[31m'
+            String RESET = '\u001B[0m'
+            String GREEN = '\u001B[32m'
+            if (result.resultType == TestResult.ResultType.SUCCESS) {
+                println "$GREEN \u2714 $RESET"
+            } else {
+                println "$RED \u2716 $RESET"
+            }
         }
     }
+}
+
+task tdd {
+  inputs.files 'src/test'
+  dependsOn test
 }

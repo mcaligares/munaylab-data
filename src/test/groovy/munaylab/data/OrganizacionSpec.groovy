@@ -68,19 +68,4 @@ class OrganizacionSpec extends SpecificationTestBuilder implements DomainUnitTes
         err.message.contains('unique.nombre') == true
     }
 
-    void "agregar contenido a una organizacion"() {
-        given:
-        def org = organizacionValida
-        when:
-        org.mision = nuevoArticulo('mision')
-        org.valores = nuevoArticulo('valores')
-        org.save(flush: true, failOnError: true)
-        and:
-        // TODO Guardamos los articulos mision y vision de forma separada
-        org.vision = nuevoArticulo('vision')
-        org.save(flush: true, failOnError: true)
-        then:
-        Articulo.count() == 3
-        Organizacion.count() == 1
-    }
 }
