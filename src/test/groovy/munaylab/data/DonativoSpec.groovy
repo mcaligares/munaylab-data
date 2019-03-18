@@ -1,18 +1,25 @@
 package munaylab.data
 
+import munaylab.SpecificationTestBuilder
+
 import grails.testing.gorm.DomainUnitTest
-import spock.lang.Specification
 
-class DonativoSpec extends Specification implements DomainUnitTest<Donativo> {
+class DonativoSpec extends SpecificationTestBuilder implements DomainUnitTest<Donativo> {
 
-    def setup() {
+    void "validacion de campos obligatorios"() {
+        expect: donativoValido.validate() == true
     }
 
-    def cleanup() {
-    }
-
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "validacion de campo nombre"() {
+        expect:
+        new Donativo(DONATIVO_VALIDO + [nombre: dato]).validate() == resultado
+        where:
+        resultado | dato
+        false     | ''
+        false     | ' '
+        false     | '12'
+        true      | 'algo'
+        true      | CADENA_DE_50_CARACTERES
+        false     | CADENA_DE_50_CARACTERES + '1'
     }
 }
