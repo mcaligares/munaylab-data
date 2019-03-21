@@ -1,6 +1,7 @@
 package munaylab
 
 import munaylab.data.Disponibilidad
+import munaylab.data.Donativo
 
 interface DataSample {
 
@@ -107,17 +108,14 @@ interface DataSample {
     static final CATEGORIA_VALIDA = [ nombre: 'categoria padre' ]
     static final SUBCATEGORIA_VALIDA = [ nombre: 'subcategoria' ]
 
-    static final NOMBRE_CATEGORIA_VALIDOS = [
-        'cat',
-        'categoria',
-        CADENA_DE_50_CARACTERES
-    ]
+    static final NOMBRE_CATEGORIA_VALIDOS = [ 'cat', 'categoria', CADENA_DE_50_CARACTERES ]
+    static final NOMBRE_CATEGORIA_INVALIDOS = [ null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1' ]
 
-    static final NOMBRE_CATEGORIA_INVALIDOS = [
-        null,
-        '',
-        ' ',
-        '12',
-        CADENA_DE_50_CARACTERES + '1'
+    static final DONATIVO_VALIDO = [
+        nombre: 'donativo',
+        tipo: Donativo.Tipo.BIEN,
+        estado: Donativo.Estado.NUEVO
     ]
+    static final NOMBRES_DE_DONATIVO_VALIDOS = ['123', 'donativo', CADENA_DE_50_CARACTERES]
+    static final NOMBRES_DE_DONATIVO_INVALIDOS = [null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1']
 }
