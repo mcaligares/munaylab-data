@@ -159,5 +159,14 @@ class SpecificationTestBuilder extends Specification implements DataSample {
     protected Donativo getDonativoValido() {
         return new Donativo(DONATIVO_VALIDO)
     }
+    protected Donativo getDonativoServicioValido() {
+        return new Donativo(tipo: Donativo.Tipo.SERVICIO, nombre: 'servicio')
+    }
+
+    protected Donativo nuevoDonativoCon(String nombre, def valor) {
+        Donativo donativo = donativoValido
+        donativo[nombre] = valor
+        return donativo
+    }
 
 }

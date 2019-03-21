@@ -10,16 +10,17 @@ class DonativoSpec extends SpecificationTestBuilder implements DomainUnitTest<Do
         expect: donativoValido.validate() == true
     }
 
-    void "validacion de campo nombre"() {
-        expect:
-        new Donativo(DONATIVO_VALIDO + [nombre: dato]).validate() == resultado
-        where:
-        resultado | dato
-        false     | ''
-        false     | ' '
-        false     | '12'
-        true      | 'algo'
-        true      | CADENA_DE_50_CARACTERES
-        false     | CADENA_DE_50_CARACTERES + '1'
+    void "validacion de nombres validos"() {
+        expect: nuevoDonativoCon('nombre', nombre).validate()
+        where: nombre << NOMBRES_DE_DONATIVO_VALIDOS
+    }
+
+    void "validacion de nombres invalidos"() {
+        expect: !nuevoDonativoCon('nombre', nombre).validate()
+        where: nombre << NOMBRES_DE_DONATIVO_INVALIDOS
+    }
+
+    void "validacion de un servicio"() {
+        given: donativoServicioValido.validate() == true
     }
 }

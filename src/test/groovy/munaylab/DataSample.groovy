@@ -107,6 +107,9 @@ interface DataSample {
 
     static final DONATIVO_VALIDO = [
         nombre: 'donativo',
-        tipo: Donativo.Tipo.BIEN
+        tipo: Donativo.Tipo.BIEN,
+        estado: Donativo.Estado.NUEVO
     ]
+    static final NOMBRES_DE_DONATIVO_VALIDOS = ['123', 'donativo', CADENA_DE_50_CARACTERES]
+    static final NOMBRES_DE_DONATIVO_INVALIDOS = [null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1']
 }
