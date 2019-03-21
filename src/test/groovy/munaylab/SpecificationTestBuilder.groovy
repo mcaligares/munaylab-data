@@ -3,6 +3,7 @@ package munaylab
 import munaylab.data.Actividad
 import munaylab.data.Articulo
 import munaylab.data.Contrato
+import munaylab.data.Categoria
 import munaylab.data.Direccion
 import munaylab.data.Disponibilidad
 import munaylab.data.Privacidad
@@ -154,4 +155,15 @@ class SpecificationTestBuilder extends Specification implements DataSample {
         assert org.planificacion.programas.first().proyectos.first().actividades.first()
         // TODO comparar actividad del obj con la de base de datos
     }
+
+    protected Categoria getCategoriaValida() {
+        return new Categoria(CATEGORIA_VALIDA)
+    }
+
+    protected Categoria nuevaCategoriaCon(String campo, def valor) {
+        Categoria categoria = categoriaValida
+        categoria[campo] = valor
+        return categoria
+    }
+
 }
