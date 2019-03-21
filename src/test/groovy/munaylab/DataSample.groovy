@@ -50,6 +50,7 @@ interface DataSample {
 
     static final CADENA_DE_10_CARACTERES = '1234567890'
     static final CADENA_DE_20_CARACTERES = (1..2).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_50_CARACTERES = (1..5).collect{CADENA_DE_10_CARACTERES}.join()
     static final CADENA_DE_100_CARACTERES = (1..10).collect{CADENA_DE_10_CARACTERES}.join()
     static final CADENA_DE_200_CARACTERES = (1..20).collect{CADENA_DE_10_CARACTERES}.join()
     static final CADENA_DE_300_CARACTERES = (1..30).collect{CADENA_DE_10_CARACTERES}.join()
@@ -102,4 +103,21 @@ interface DataSample {
     static final DESCRIPCION_DE_PLAN_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_1000_CARACTERES +'1']
     static final CONTENIDO_DE_PLAN_VALIDOS = [CADENA_DE_10_CARACTERES, 'Lorem ipsum dolor sit amet', (CADENA_DE_5000_CARACTERES)]
     static final CONTENIDO_DE_PLAN_INVALIDOS = [null, '', ' ', CADENA_DE_10_CARACTERES -'1', CADENA_DE_5000_CARACTERES +'1']
+
+    static final CATEGORIA_VALIDA = [ nombre: 'categoria padre' ]
+    static final SUBCATEGORIA_VALIDA = [ nombre: 'subcategoria' ]
+
+    static final NOMBRE_CATEGORIA_VALIDOS = [
+        'cat',
+        'categoria',
+        CADENA_DE_50_CARACTERES
+    ]
+
+    static final NOMBRE_CATEGORIA_INVALIDOS = [
+        null,
+        '',
+        ' ',
+        '12',
+        CADENA_DE_50_CARACTERES + '1'
+    ]
 }
