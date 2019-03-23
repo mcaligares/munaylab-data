@@ -1,6 +1,6 @@
 package munaylab.data
 
-class Disponibilidad {
+class Horario {
 
     Dia dia
     Integer desdeHora
