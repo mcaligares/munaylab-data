@@ -1,6 +1,7 @@
 package munaylab
 
 import munaylab.data.Donativo
+import munaylab.data.Evento
 import munaylab.data.Horario
 
 interface DataSample {
@@ -118,4 +119,14 @@ interface DataSample {
     ]
     static final NOMBRES_DE_DONATIVO_VALIDOS = ['123', 'donativo', CADENA_DE_50_CARACTERES]
     static final NOMBRES_DE_DONATIVO_INVALIDOS = [null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1']
+
+    static final EVENTO_VALIDO = [
+        tipo: Evento.Tipo.CONVOCATORIA,
+        nombre: 'evento',
+        objetivo: 'objetivo del evento'
+    ]
+    static final NOMBRES_EVENTOS_VALIDOS = ['nom', 'nombre', CADENA_DE_50_CARACTERES]
+    static final NOMBRES_EVENTOS_INVALIDOS = [null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1']
+    static final OBJETIVOS_DE_EVENTOS_VALIDOS = ['12345', 'objetivos', CADENA_DE_300_CARACTERES]
+    static final OBJETIVOS_DE_EVENTOS_INVALIDOS = [null, '', ' ', '1234', CADENA_DE_300_CARACTERES + '1']
 }

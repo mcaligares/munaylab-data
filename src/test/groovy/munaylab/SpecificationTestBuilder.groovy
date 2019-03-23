@@ -5,6 +5,7 @@ import munaylab.data.Articulo
 import munaylab.data.Contrato
 import munaylab.data.Categoria
 import munaylab.data.Direccion
+import munaylab.data.Evento
 import munaylab.data.Horario
 import munaylab.data.Donativo
 import munaylab.data.Privacidad
@@ -186,4 +187,17 @@ class SpecificationTestBuilder extends Specification implements DataSample {
         return donativo
     }
 
+    protected Evento getEventoValido() {
+        def evento = new Evento(EVENTO_VALIDO)
+        evento.horario = horarioValido
+        evento.articulo = articuloValido
+        evento.direccion = direccionValida
+        return evento
+    }
+
+    protected Evento nuevoEventoCon(String nombre, def valor) {
+        def evento = eventoValido
+        evento[nombre] = valor
+        return evento
+    }
 }
