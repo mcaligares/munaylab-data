@@ -75,4 +75,14 @@ class HorarioSpec extends SpecificationTestBuilder implements DomainUnitTest<Hor
         true      | false
     }
 
+    void "validacion de campo turno nocturno"() {
+        expect:
+        nuevoHorarioCon('nocturno', valor).validate() == resultado
+        where:
+        resultado | valor
+        false     | null
+        true      | true
+        true      | false
+    }
+
 }

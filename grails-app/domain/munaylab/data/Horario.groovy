@@ -10,6 +10,7 @@ class Horario {
     Boolean todoElDia = false
     Boolean matutino = false
     Boolean vespertino = false
+    Boolean nocturno = false
 
     static constraints = {
         dia nullable: false
@@ -20,6 +21,7 @@ class Horario {
         todoElDia nullable: false
         matutino nullable: false
         vespertino nullable: false
+        nocturno nullable: false
     }
 
     enum Dia {
