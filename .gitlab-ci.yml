@@ -6,7 +6,7 @@ variables:
 
 # We use SDKMan as tool for managing versions
 before_script:
-   - apt-get update -qq && apt-get install -y -qq unzip
+   - apt-get update -qq && apt-get install -y -qq unzip zip
    - curl -sSL https://get.sdkman.io | bash
    - echo sdkman_auto_answer=true > /root/.sdkman/etc/config
    - source /root/.sdkman/bin/sdkman-init.sh
