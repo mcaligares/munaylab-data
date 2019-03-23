@@ -4,11 +4,13 @@ class Voluntario {
 
     Usuario usuario
     Estado estado = Estado.INACTIVO
+    Collection contratos
+    Collection disponibilidad
 
     static belongsTo = [usuario: Usuario]
     static hasMany = [
         contratos: Contrato,
-        disponibilidad: Disponibilidad
+        disponibilidad: Horario
     ]
 
     static constraints = {

@@ -1,7 +1,7 @@
 package munaylab
 
-import munaylab.data.Disponibilidad
 import munaylab.data.Donativo
+import munaylab.data.Horario
 
 interface DataSample {
 
@@ -19,8 +19,8 @@ interface DataSample {
         pais:           'Argentina'
     ]
 
-    static final DISPONIBILIDAD_VALIDA = [
-        dia: Disponibilidad.Dia.LUNES,
+    static final HORARIO_VALIDO = [
+        dia: Horario.Dia.LUNES,
         desdeHora: 10,
         desdeMinuto: 0,
         hastaHora: 13,

@@ -16,10 +16,8 @@ class VoluntarioSpec extends SpecificationTestBuilder implements DomainUnitTest<
     void "crear usuario voluntario con disponibilidad"() {
         given:
         def usuario = usuarioValido
+        5.times { usuario.voluntario.addToDisponibilidad(horarioValido) }
         when:
-        5.times {
-            usuario.voluntario.addToDisponibilidad(disponibilidadValida)
-        }
         usuario.save(flush: true)
         then:
         comprobarDisponibilidadDelVoluntario(5)

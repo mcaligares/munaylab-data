@@ -5,7 +5,7 @@ import munaylab.data.Articulo
 import munaylab.data.Contrato
 import munaylab.data.Categoria
 import munaylab.data.Direccion
-import munaylab.data.Disponibilidad
+import munaylab.data.Horario
 import munaylab.data.Donativo
 import munaylab.data.Privacidad
 import munaylab.data.Organizacion
@@ -50,13 +50,19 @@ class SpecificationTestBuilder extends Specification implements DataSample {
         return new Direccion(DIRECCION_VALIDA)
     }
 
-    protected Disponibilidad getDisponibilidadValida() {
-        return new Disponibilidad(DISPONIBILIDAD_VALIDA)
+    protected Horario getHorarioValido() {
+        return new Horario(HORARIO_VALIDO)
+    }
+    protected Horario nuevoHorarioCon(String nombre1, def valor1, String nombre2 = null, def valor2 = null) {
+        def horario = new Horario(HORARIO_VALIDO)
+        horario[nombre1] = valor1
+        if (nombre2) horario[nombre2] = valor2
+        return horario
     }
 
     protected void comprobarDisponibilidadDelVoluntario(int cantidad) {
         comprobarVoluntario()
-        assert Disponibilidad.count() == cantidad
+        assert Horario.count() == cantidad
     }
 
     protected Contrato getContratoValido() {

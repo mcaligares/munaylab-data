@@ -4,24 +4,24 @@ import munaylab.SpecificationTestBuilder
 
 import grails.testing.gorm.DomainUnitTest
 
-class DisponibilidadSpec extends SpecificationTestBuilder implements DomainUnitTest<Disponibilidad> {
+class HorarioSpec extends SpecificationTestBuilder implements DomainUnitTest<Horario> {
 
     void "validacion de campos obligatorios"() {
-        expect: disponibilidadValida.validate() == true
+        expect: horarioValido.validate() == true
     }
 
     void "validacion de dia"() {
         expect:
-        new Disponibilidad(DISPONIBILIDAD_VALIDA + [dia: dia]).validate() == resultado
+        nuevoHorarioCon('dia', valor).validate() == resultado
         where:
-        resultado | dia
+        resultado | valor
         false     | null
-        true      | Disponibilidad.Dia.LUNES
+        true      | Horario.Dia.LUNES
     }
 
     void "validacion de fecha desde"() {
         expect:
-        new Disponibilidad(DISPONIBILIDAD_VALIDA + [desdeHora: hora, desdeMinuto: min]).validate() == resultado
+        nuevoHorarioCon('desdeHora', hora, 'desdeMinuto', min).validate() == resultado
         where:
         resultado | hora | min
         false     | 24   | 0
@@ -34,7 +34,7 @@ class DisponibilidadSpec extends SpecificationTestBuilder implements DomainUnitT
 
     void "validacion de fecha hasta"() {
         expect:
-        new Disponibilidad(DISPONIBILIDAD_VALIDA + [hastaHora: hora, hastaMinuto: min]).validate() == resultado
+        nuevoHorarioCon('hastaHora', hora, 'hastaMinuto', min).validate() == resultado
         where:
         resultado | hora | min
         false     | 24   | 0
@@ -45,9 +45,9 @@ class DisponibilidadSpec extends SpecificationTestBuilder implements DomainUnitT
         true      | 10   | 10
     }
 
-    void "validacion de disponibilidad (todo el dia)"() {
+    void "validacion de campo todo el dia"() {
         expect:
-        new Disponibilidad(DISPONIBILIDAD_VALIDA + [todoElDia: valor]).validate() == resultado
+        nuevoHorarioCon('todoElDia', valor).validate() == resultado
         where:
         resultado | valor
         false     | null
@@ -55,9 +55,9 @@ class DisponibilidadSpec extends SpecificationTestBuilder implements DomainUnitT
         true      | false
     }
 
-    void "validacion de disponibilidad (turno matutino)"() {
+    void "validacion de campo turno matutino"() {
         expect:
-        new Disponibilidad(DISPONIBILIDAD_VALIDA + [matutino: valor]).validate() == resultado
+        nuevoHorarioCon('matutino', valor).validate() == resultado
         where:
         resultado | valor
         false     | null
@@ -65,9 +65,9 @@ class DisponibilidadSpec extends SpecificationTestBuilder implements DomainUnitT
         true      | false
     }
 
-    void "validacion de disponibilidad (turno vespertino)"() {
+    void "validacion de campo turno vespertino"() {
         expect:
-        new Disponibilidad(DISPONIBILIDAD_VALIDA + [vespertino: valor]).validate() == resultado
+        nuevoHorarioCon('vespertino', valor).validate() == resultado
         where:
         resultado | valor
         false     | null
