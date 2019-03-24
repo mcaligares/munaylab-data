@@ -1,8 +1,7 @@
 Thumbs.db
 .DS_Store
 .gradle
-gradle/
-gradlew*
+gradlew.bat
 grailsw*
 grails-wrapper.jar
 build/
