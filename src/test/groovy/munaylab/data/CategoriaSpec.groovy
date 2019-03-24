@@ -28,9 +28,7 @@ class CategoriaSpec extends SpecificationTestBuilder implements DomainUnitTest<C
         when:
         categoria.save()
         then:
-        Categoria.count() == 1
-        categoria.hasErrors()
-        categoria.errors.hasFieldErrors('nombre')
+        comprobarNombreUnicoDeCategoria(categoria)
     }
 
     void "creacion de subcategorias"() {
@@ -38,9 +36,9 @@ class CategoriaSpec extends SpecificationTestBuilder implements DomainUnitTest<C
         def categoria = categoriaValida
         5.times { categoria.addToSubcategorias(nuevaCategoriaCon('nombre', "categoria ${it}")) }
         when:
-        categoria.save(flush: true, failOnError: true)
+        categoria.save(flush: true)
         then:
-        Categoria.count() == 6
+        comprobarSubcategorias(categoria, 5)
     }
 
 }

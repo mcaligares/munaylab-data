@@ -5,7 +5,8 @@ import groovy.transform.ToString
 @ToString(
     includeNames=true,
     includeFields=false,
-    excludes='organizacion')
+    excludes='organizacion'
+)
 class Planificacion {
 
     Articulo mision

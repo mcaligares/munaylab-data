@@ -14,6 +14,9 @@ class Organizacion {
     Direccion direccion
     Date fechaDeConstitucion
     Planificacion planificacion
+    Collection editores
+    Collection voluntarios
+    Collection administradores
 
     Date dateCreated
     Date lastUpdated
@@ -22,8 +25,8 @@ class Organizacion {
 
     static hasMany = [
         editores: Usuario,
-        administradores: Usuario,
-        voluntarios: Voluntario
+        voluntarios: Voluntario,
+        administradores: Usuario
     ]
 
     static constraints = {

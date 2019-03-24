@@ -51,8 +51,8 @@ class ContratoSpec extends SpecificationTestBuilder implements DomainUnitTest<Co
         false     | null
         false     | ''
         false     | ' '
-        false     | '12345678901234567890123456789012345'
-        false     | '1234567890123456789012345678901234567'
+        false     | CADENA_DE_30_CARACTERES + '12345'
+        false     | CADENA_DE_30_CARACTERES + '1234567'
         true      | UUID.randomUUID().toString()
     }
 

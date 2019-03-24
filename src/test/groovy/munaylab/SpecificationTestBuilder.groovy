@@ -174,9 +174,22 @@ class SpecificationTestBuilder extends Specification implements DataSample {
         return categoria
     }
 
+    protected void comprobarNombreUnicoDeCategoria(Categoria categoria) {
+        assert Categoria.count() == 1
+        assert categoria.hasErrors()
+        assert categoria.errors.hasFieldErrors('nombre')
+    }
+
+    protected void comprobarSubcategorias(Categoria categoria, int cantidad) {
+        assert !categoria.hasErrors()
+        assert categoria.subcategorias.size() == cantidad
+        assert Categoria.count() == (cantidad + 1)
+    }
+
     protected Donativo getDonativoValido() {
         return new Donativo(DONATIVO_VALIDO)
     }
+
     protected Donativo getDonativoServicioValido() {
         return new Donativo(tipo: Donativo.Tipo.SERVICIO, nombre: 'servicio')
     }

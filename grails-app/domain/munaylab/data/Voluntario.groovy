@@ -8,6 +8,7 @@ class Voluntario {
     Collection disponibilidad
 
     static belongsTo = [usuario: Usuario]
+
     static hasMany = [
         contratos: Contrato,
         disponibilidad: Horario

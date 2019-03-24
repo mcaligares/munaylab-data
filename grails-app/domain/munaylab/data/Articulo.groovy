@@ -2,7 +2,11 @@ package munaylab.data
 
 import groovy.transform.ToString
 
-@ToString(includeNames=true, includeFields=true, excludes='organizacion')
+@ToString(
+    includeNames=true,
+    includeFields=true,
+    excludes='organizacion'
+)
 class Articulo {
 
     String autor

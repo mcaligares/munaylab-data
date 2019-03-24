@@ -52,6 +52,7 @@ interface DataSample {
 
     static final CADENA_DE_10_CARACTERES = '1234567890'
     static final CADENA_DE_20_CARACTERES = (1..2).collect{CADENA_DE_10_CARACTERES}.join()
+    static final CADENA_DE_30_CARACTERES = (1..3).collect{CADENA_DE_10_CARACTERES}.join()
     static final CADENA_DE_50_CARACTERES = (1..5).collect{CADENA_DE_10_CARACTERES}.join()
     static final CADENA_DE_100_CARACTERES = (1..10).collect{CADENA_DE_10_CARACTERES}.join()
     static final CADENA_DE_200_CARACTERES = (1..20).collect{CADENA_DE_10_CARACTERES}.join()
