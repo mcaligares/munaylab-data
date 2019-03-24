@@ -1,23 +1,25 @@
 image: java:8
 
 variables:
-  GRAILS_VERSION: "3.3.9"
   GRADLE_VERSION: "5.2.1"
 
-# We use SDKMan as tool for managing versions
 before_script:
-   - apt-get update -qq && apt-get install -y -qq unzip zip
+  # install zip and sdkman packages
+   - apt-get update -qq && apt-get install -y -qq zip unzip
    - curl -sSL https://get.sdkman.io | bash
+  # set auto answer property and add sdkman source
    - echo sdkman_auto_answer=true > /root/.sdkman/etc/config
    - source /root/.sdkman/bin/sdkman-init.sh
+  # install gradle and grails with sdkman
    - sdk install gradle $GRADLE_VERSION < /dev/null
    - sdk use gradle $GRADLE_VERSION
-   - sdk install grails $GRAILS_VERSION < /dev/null
-   - sdk use grails $GRAILS_VERSION
-   - grails gradle wrapper
 
 # This build job does the full grails pipeline
 # (compile, test, integrationTest, war, assemble).
 build:
  script:
    - ./gradlew build
+
+test:
+  script:
+    - ./gradlew test
