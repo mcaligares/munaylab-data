@@ -14,6 +14,7 @@ class ActividadSpec extends SpecificationTestBuilder implements DomainUnitTest<A
         when:
         actividadValida.save(flush: true)
         then:
+        Articulo.count() == 1
         Actividad.count() == 1
     }
 
@@ -25,6 +26,7 @@ class ActividadSpec extends SpecificationTestBuilder implements DomainUnitTest<A
         actividad.save(flush: true)
         then:
         Horario.count() == 1
+        Articulo.count() == 1
         Actividad.count() == 1
         actividad.horarios.size() == 1
     }

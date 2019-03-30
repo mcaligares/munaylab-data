@@ -132,7 +132,7 @@ class SpecificationTestBuilder extends Specification implements DataSample {
     }
 
     protected Actividad getActividadValida() {
-        return new Actividad(PLAN_VALIDO + [proyecto: proyectoValido])
+        return new Actividad(PLAN_VALIDO + [proyecto: proyectoValido, articulo: articuloValido])
     }
 
     protected void comprobarLaPlanificacionDeUnaOrganizacion(Organizacion org) {
