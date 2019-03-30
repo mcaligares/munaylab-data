@@ -6,11 +6,27 @@ import grails.testing.gorm.DomainUnitTest
 
 class ActividadSpec extends SpecificationTestBuilder implements DomainUnitTest<Actividad> {
 
+    void "validacion de campos"() {
+        expect: actividadValida.validate()
+    }
+
     void "guardar una actividad"() {
         when:
         actividadValida.save(flush: true)
         then:
         Actividad.count() == 1
+    }
+
+    void "guardar una actividad con horarios"() {
+        given:
+        def actividad = actividadValida
+        actividad.addToHorarios(horarioValido)
+        when:
+        actividad.save(flush: true)
+        then:
+        Horario.count() == 1
+        Actividad.count() == 1
+        actividad.horarios.size() == 1
     }
 
     void "guardar toda una planificacion"() {

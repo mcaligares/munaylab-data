@@ -11,7 +11,10 @@ import groovy.transform.ToString
 class Actividad extends Plan {
 
     Proyecto proyecto
+    Collection horarios
 
     static belongsTo = [proyecto: Proyecto]
+
+    static hasMany = [horarios: Horario]
 
 }
