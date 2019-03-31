@@ -68,7 +68,16 @@ class SpecificationTestBuilder extends Specification implements DataSample {
     }
 
     protected Contrato getContratoValido() {
-        return new Contrato(CONTRATO_VALIDO + [voluntario: usuarioValido.voluntario])
+        def contrato = new Contrato(CONTRATO_VALIDO)
+        contrato.voluntario = usuarioValido.voluntario
+        contrato.actividad = actividadValida
+        return contrato
+    }
+
+    protected Contrato nuevoContratoCon(String nombre, def valor) {
+        def contrato = contratoValido
+        contrato[nombre] = valor
+        return contrato
     }
 
     protected void comprobarContratoDeVoluntario() {

@@ -11,11 +11,8 @@ class ContratoSpec extends SpecificationTestBuilder implements DomainUnitTest<Co
     }
 
     void "validacion de fecha de inicio"() {
-        given:
-        def contrato = contratoValido
-        contrato.fechaDeInicio = fecha
         expect:
-        contrato.validate() == resultado
+        nuevoContratoCon('fechaDeInicio', fecha).validate() == resultado
         where:
         resultado | fecha
         true      | new Date()
@@ -26,11 +23,8 @@ class ContratoSpec extends SpecificationTestBuilder implements DomainUnitTest<Co
     }
 
     void "validacion de fecha de firma"() {
-        given:
-        def contrato = contratoValido
-        contrato.fechaDeFirma = fecha
         expect:
-        contrato.validate() == resultado
+        nuevoContratoCon('fechaDeFirma', fecha).validate() == resultado
         where:
         resultado | fecha
         true      | new Date()
@@ -41,11 +35,8 @@ class ContratoSpec extends SpecificationTestBuilder implements DomainUnitTest<Co
     }
 
     void "validacion de firma digital"() {
-        given:
-        def contrato = contratoValido
-        contrato.firmaDigital = firma
         expect:
-        contrato.validate() == resultado
+        nuevoContratoCon('firmaDigital', firma).validate() == resultado
         where:
         resultado | firma
         false     | null
@@ -56,4 +47,23 @@ class ContratoSpec extends SpecificationTestBuilder implements DomainUnitTest<Co
         true      | UUID.randomUUID().toString()
     }
 
+    void "validacion de dedicacion"() {
+        expect:
+        nuevoContratoCon('dedicacion', horas).validate() == resultado
+        where:
+        resultado | horas
+        true      | 1
+        true      | 160
+        false     | 0
+        false     | -1
+        false     | 161
+    }
+
+    void "guardar un contrato"() {
+        when:
+        contratoValido.save(flush: true)
+        then:
+        Contrato.count() == 1
+        Actividad.count() == 1
+    }
 }

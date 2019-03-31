@@ -32,6 +32,7 @@ interface DataSample {
     ]
 
     static final CONTRATO_VALIDO = [
+        dedicacion: 80,
         fechaDeInicio: new Date() +1,
         firmaDigital: UUID.randomUUID().toString()
     ]
