@@ -5,9 +5,10 @@ import munaylab.data.Articulo
 import munaylab.data.Contrato
 import munaylab.data.Categoria
 import munaylab.data.Direccion
-import munaylab.data.Evento
-import munaylab.data.Horario
 import munaylab.data.Donativo
+import munaylab.data.Evento
+import munaylab.data.Elemento
+import munaylab.data.Horario
 import munaylab.data.Privacidad
 import munaylab.data.Organizacion
 import munaylab.data.Plan
@@ -186,8 +187,22 @@ class SpecificationTestBuilder extends Specification implements DataSample {
         assert Categoria.count() == (cantidad + 1)
     }
 
+    protected Elemento getElementoValido() {
+        return new Elemento(ELEMENTO_VALIDO)
+    }
+
+    protected Elemento getElementoServicioValido() {
+        return new Elemento(tipo: Elemento.Tipo.SERVICIO, nombre: 'servicio')
+    }
+
+    protected Elemento nuevoElementoCon(String nombre, def valor) {
+        Elemento elemento = elementoValido
+        elemento[nombre] = valor
+        return elemento
+    }
+
     protected Donativo getDonativoValido() {
-        return new Donativo(DONATIVO_VALIDO)
+        return new Donativo(ELEMENTO_VALIDO)
     }
 
     protected Donativo getDonativoServicioValido() {

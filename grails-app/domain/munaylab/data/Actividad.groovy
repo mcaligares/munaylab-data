@@ -13,9 +13,10 @@ class Actividad extends Plan {
     Proyecto proyecto
     Articulo articulo
     Collection horarios
+    Collection elementos
 
     static belongsTo = [proyecto: Proyecto]
 
-    static hasMany = [horarios: Horario]
+    static hasMany = [horarios: Horario, elementos: Elemento]
 
 }

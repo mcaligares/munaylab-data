@@ -31,6 +31,19 @@ class ActividadSpec extends SpecificationTestBuilder implements DomainUnitTest<A
         actividad.horarios.size() == 1
     }
 
+    void "guardar una actividad con elementos"() {
+        given:
+        def actividad = actividadValida
+        actividad.addToElementos(elementoValido)
+        when:
+        actividad.save(flush: true)
+        then:
+        Elemento.count() == 1
+        Articulo.count() == 1
+        Actividad.count() == 1
+        actividad.elementos.size() == 1
+    }
+
     void "guardar toda una planificacion"() {
         when:
         def planning = planificacionValida.save(flush: true)
