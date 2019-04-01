@@ -5,6 +5,7 @@ gradlew.bat
 grailsw*
 grails-wrapper.jar
 build/
+docs/
 out/
 .idea
 *.iml
