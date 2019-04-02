@@ -46,9 +46,30 @@ interface DataSample {
 
     static final ORGANIZACION_VALIDA = [
         nombre: 'MunayLab',
-        url: 'munaylab',
+        dominio: 'munaylab',
         resumen: 'Lorem ipsum dolor sit amet...',
         fechaDeConstitucion: new Date() -1
+    ]
+
+    static final PLAN_VALIDO = [
+        nombre: 'planing',
+        descripcion: 'descripcion de planing',
+        contenido: 'contenido de la planing',
+        fechaDeInicio: new Date() +10,
+        fechaDeFin: new Date() +50,
+        publicado: true
+    ]
+
+    static final ELEMENTO_VALIDO = [
+        nombre: 'elemento',
+        tipo: Elemento.Tipo.BIEN,
+        estado: Elemento.Estado.NUEVO
+    ]
+
+    static final EVENTO_VALIDO = [
+        tipo: Evento.Tipo.CONVOCATORIA,
+        nombre: 'evento',
+        objetivo: 'objetivo del evento'
     ]
 
     static final CADENA_DE_10_CARACTERES = '1234567890'
@@ -86,25 +107,18 @@ interface DataSample {
     static final NOMBRES_DE_ORGANIZACION_VALIDOS = ['abc', 'MunayLab']
     static final NOMBRES_DE_ORGANIZACION_INVALIDOS = [null, '', ' ', '  ', CADENA_DE_200_CARACTERES + '1']
 
-    static final URLS_DE_ORGANIZACION_VALIDOS = ['abc', 'MunayLab']
-    static final URLS_DE_ORGANIZACION_INVALIDOS = [null, '', ' ', '  ', CADENA_DE_200_CARACTERES + '1']
+    static final DOMINIOS_DE_ORGANIZACION_VALIDOS = ['abc', 'MunayLab']
+    static final DOMINIOS_DE_ORGANIZACION_INVALIDOS = [null, '', ' ', '  ', CADENA_DE_200_CARACTERES + '1']
 
     static final RESUMENES_DE_ORGANIZACION_VALIDOS = ['Lorem ipsum dolor sit amet']
     static final RESUMENES_DE_ORGANIZACION_INVALIDOS = [null, '', '123456789', CADENA_DE_300_CARACTERES + '1']
 
-    static final PLAN_VALIDO = [
-        nombre: 'planing',
-        descripcion: 'descripcion de planing',
-        contenido: 'contenido de la planing',
-        fechaDeInicio: new Date() +10,
-        fechaDeFin: new Date() +50,
-        publicado: true
-    ]
-
     static final NOMBRES_DE_PLAN_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_500_CARACTERES)]
     static final NOMBRES_DE_PLAN_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_500_CARACTERES +'1']
+
     static final DESCRIPCION_DE_PLAN_VALIDOS = ['abcde', 'Lorem ipsum dolor sit amet', (CADENA_DE_1000_CARACTERES)]
     static final DESCRIPCION_DE_PLAN_INVALIDOS = [null, '', ' ', 'abcd', CADENA_DE_1000_CARACTERES +'1']
+
     static final CONTENIDO_DE_PLAN_VALIDOS = [CADENA_DE_10_CARACTERES, 'Lorem ipsum dolor sit amet', (CADENA_DE_5000_CARACTERES)]
     static final CONTENIDO_DE_PLAN_INVALIDOS = [null, '', ' ', CADENA_DE_10_CARACTERES -'1', CADENA_DE_5000_CARACTERES +'1']
 
@@ -114,21 +128,12 @@ interface DataSample {
     static final NOMBRE_CATEGORIA_VALIDOS = [ 'cat', 'categoria', CADENA_DE_50_CARACTERES ]
     static final NOMBRE_CATEGORIA_INVALIDOS = [ null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1' ]
 
-    static final ELEMENTO_VALIDO = [
-        nombre: 'elemento',
-        tipo: Elemento.Tipo.BIEN,
-        estado: Elemento.Estado.NUEVO
-    ]
     static final NOMBRES_DE_ELEMENTO_VALIDOS = ['123', 'elementos', CADENA_DE_50_CARACTERES]
     static final NOMBRES_DE_ELEMENTO_INVALIDOS = [null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1']
 
-    static final EVENTO_VALIDO = [
-        tipo: Evento.Tipo.CONVOCATORIA,
-        nombre: 'evento',
-        objetivo: 'objetivo del evento'
-    ]
     static final NOMBRES_EVENTOS_VALIDOS = ['nom', 'nombre', CADENA_DE_50_CARACTERES]
     static final NOMBRES_EVENTOS_INVALIDOS = [null, '', ' ', '12', CADENA_DE_50_CARACTERES + '1']
+
     static final OBJETIVOS_DE_EVENTOS_VALIDOS = ['12345', 'objetivos', CADENA_DE_300_CARACTERES]
     static final OBJETIVOS_DE_EVENTOS_INVALIDOS = [null, '', ' ', '1234', CADENA_DE_300_CARACTERES + '1']
 }

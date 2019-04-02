@@ -25,14 +25,14 @@ class OrganizacionSpec extends SpecificationTestBuilder implements DomainUnitTes
         where:  valor << NOMBRES_DE_ORGANIZACION_INVALIDOS
     }
 
-    void "validacion de urls validas"() {
-        expect: nuevaOrganizacionCon('url', valor).validate()
-        where:  valor << URLS_DE_ORGANIZACION_VALIDOS
+    void "validacion de dominios validos"() {
+        expect: nuevaOrganizacionCon('dominio', valor).validate()
+        where:  valor << DOMINIOS_DE_ORGANIZACION_VALIDOS
     }
 
-    void "validacion de urls invalidos"() {
-        expect: !nuevaOrganizacionCon('url', valor).validate()
-        where:  valor << URLS_DE_ORGANIZACION_INVALIDOS
+    void "validacion de dominios invalidos"() {
+        expect: !nuevaOrganizacionCon('dominio', valor).validate()
+        where:  valor << DOMINIOS_DE_ORGANIZACION_INVALIDOS
     }
 
     void "validacion de resumenes validos"() {
@@ -55,7 +55,7 @@ class OrganizacionSpec extends SpecificationTestBuilder implements DomainUnitTes
         where:  valor << [new Date() +1, new Date() +1000]
     }
 
-    void "validacion de integridad de nombre y url"() {
+    void "validacion de integridad de nombre y dominio"() {
         given:
         def org = organizacionValida.save(flush: true)
         def otraOrg = organizacionValida
@@ -64,7 +64,7 @@ class OrganizacionSpec extends SpecificationTestBuilder implements DomainUnitTes
         then:
         Organizacion.count() == 1
         def err = thrown Exception
-        err.message.contains('unique.url') == true
+        err.message.contains('unique.dominio') == true
         err.message.contains('unique.nombre') == true
     }
 

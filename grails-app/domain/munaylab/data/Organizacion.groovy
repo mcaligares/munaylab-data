@@ -12,7 +12,7 @@ class Organizacion {
     /** Nombre de la organización, es un campo obligatorio, único y con un tamaño de 3 a 200 caracteres. */
     String nombre
     /** Subdominio de la organización, es un campo obligatorio, único y con un tamaño de 3 a 200 caracteres. */
-    String url
+    String dominio
     /** Resumen de la organización, es un campo obligatorio con un tamaño de 10 a 300 caracteres. */
     String resumen
     /** {@link Direccion} de la organización. */
@@ -45,7 +45,7 @@ class Organizacion {
 
     static constraints = {
         nombre nullable: false, blank: false, unique: true, size: 3..200
-        url nullable: false, blank: false, unique: true, size: 3..200
+        dominio nullable: false, blank: false, unique: true, size: 3..200
         resumen nullable: false, blank: false, size: 10..300
         direccion nullable: false
         fechaDeConstitucion nullable: false, max: new Date() +1
