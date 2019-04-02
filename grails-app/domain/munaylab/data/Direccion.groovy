@@ -1,12 +1,19 @@
 package munaylab.data
 
+/** Representa la dirección física de un {@link Usuario} o una {@link Organizacion}. */
 class Direccion {
 
+    /** Coordenada de Latitud, campo opcional. */
     String latitud
+    /** Coordenada de Longitud, campo opcional. */
     String longitud
+    /** Domicilio campo obligatorio con un tamaño de 3 a 50 caracteres */
     String domicilio
+    /** Departamento campo obligatorio con un tamaño de 3 a 50 caracteres */
     String departamento
+    /** Provincia campo obligatorio con un tamaño de 3 a 50 caracteres */
     String provincia
+    /** Pais campo obligatorio con un tamaño de 3 a 50 caracteres */
     String pais
 
     static constraints = {

@@ -1,15 +1,25 @@
 package munaylab.data
 
+/** Representa un horario. Constituido por un dia y un rango de horas. */
 class Horario {
 
+    /** Dia del horario, campo obligatorio. */
     Dia dia
+    /** Inicio del rango de horas (0 - 23). */
     Integer desdeHora
+    /** Inicio del rango de minutos (0 - 59). */
     Integer desdeMinuto
+    /** Fin del rango de horas (0 - 23). */
     Integer hastaHora
+    /** Fin del rango de minutos (0 - 59). */
     Integer hastaMinuto
+    /** Opción para marcar disponibilidad de todo el día. */
     Boolean todoElDia = false
+    /** Opción para marcar disponibilidad matutina. */
     Boolean matutino = false
+    /** Opción para marcar disponibilidad vespertina. */
     Boolean vespertino = false
+    /** Opción para marcar disponibilidad nocturna. */
     Boolean nocturno = false
 
     static constraints = {
@@ -24,6 +34,7 @@ class Horario {
         nocturno nullable: false
     }
 
+    /** Dias de un horario. */
     enum Dia {
         LUNES,
         MARTES,
